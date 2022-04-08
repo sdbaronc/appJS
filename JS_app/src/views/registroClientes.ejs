@@ -1,38 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <!-- Required meta tags-->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
-
-    <!-- Tijtle Page-->
-    <title> JS Registro de Clientes</title>
-
-    <!-- Icons font CSS-->
-    
-    
-    <!-- Font special for pages-->
-   
-
-    <!-- Vendor CSS-->
-   
-    
-    <!-- Main CSS-->
-    <link href="../../public/css/main.css" rel="stylesheet" media="all">
-</head>
+<%- include('partials/head'); %>
 
 <body>
+    <div class="row">
+        <div class="col-12">
+
+            <%- include('partials/nav'); %>
+
+        </div>
+    </div>
     <div class="page-wrapper bg-blue p-t-100 p-b-100 font-robo">
         <div class="wrapper wrapper--w680">
             <div class="card card-1">
                 <div class="card-heading"></div>
                 <div class="card-body">
                     <h2 class="title">Registro  del Cliente</h2>
-                    <form method="POST"action=""  id="form" autocomplete="off">
+                    <form action="/registroClientes"  id="form" autocomplete="off">
                         <div class="input-group">
-                            <input class="input--style-1" type="text" placeholder="Nombre / Razon Social" id="name">
+                            <input class="input--style-1" type="text" placeholder="Nombre / Razon Social" name="name" id="name">
                             <p class="mensajeError"id="pName"></p>
                         </div>
                         
@@ -63,13 +50,7 @@
         </div>
     </div>
 
-   
-
-    <!-- Main JS-->
-   
     
-
-</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
-<script " src="../../routes/validacionCliente.js"></script>
+</body>
+<script " src = "../public/validations/clientes.js"></script>
 </html>
-<!-- end document-->
