@@ -4,16 +4,53 @@
 <%- include('partials/head'); %>
 
 <body>
-    <div class="row">
-        <div class="col-12">
+    <header>
+        <img class="logo" src="../images/img/logopeq.png" alt="Logo">
+        <nav class="navegar">
+            <a class="navegar-user" href="" style="text-decoration: underline;">
 
-            <%- include('partials/nav'); %>
+            </a>
+            <a class="navegar-img" href="">
+                <img src="../images/img/Intranet/home.svg" alt="logout" style="width: 80%;">
+            </a>
+        </nav>
+    </header>
+
+    <div class="contenido">
+        <h1 style="font-size: 60px;">Modulo Clientes</h1>
+        <form action="" class="box-ByA">
+            <div>
+                <label for=""></label>
+                <input type="text" class="txt-tabla">
+                <input class="btn-tabla" type="submit" value="Buscar">
+            </div>
+            <a href="">
+                <button class="btn-tabla">Agregar Cliente</button>
+            </a>
+        </form>
+        <div class="tabla">
+            <table class="info-tabla">
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Cedula</th>
+                    <th>Correo Electronico</th>
+                    <th>Dirreccion</th>
+                    <th>Telefono</th>
+                    <th>Editar</th>
+                    <th>Eliminar</th>
+                </tr>
+            </table>
 
         </div>
+        <a href="">
+            <button class="btn edit"></button>
+        </a>
+        <a href="" class="">
+            <button class="btn delete"></button>
+        </a>
     </div>
-    
-
-    
 </body>
 
 </html>

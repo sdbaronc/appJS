@@ -1,0 +1,327 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--unnamed-font-family-nunito-sans);
+}
+
+
+/*-------------------------------------------- index.html--------------------------------------------*/
+
+.form {
+    background-color: #fff;
+    margin: 200px 600px;
+    padding: 0px 90px;
+    border-radius: 30px;
+    /*height: 550px;*/
+}
+
+.login-label {
+    font-size: 20px;
+    margin: 50px 0px 0px 0px;
+    font-weight: 400;
+}
+
+.login-input {
+    width: 95%;
+    height: 40px;
+    max-width: 500px;
+    border-radius: 2px;
+    margin: 16px auto;
+    font-size: 15px;
+    padding: 0px 10px;
+}
+
+.login-input::placeholder {
+    color: #707070;
+    font-style: italic;
+}
+
+.login-btn {
+    min-width: auto;
+    height: 50px;
+    width: 200px;
+    border-radius: 8px;
+    color: white;
+    background-color: var(--azul);
+    border: none;
+    font-size: 18px;
+    margin: 30px auto 50px auto;
+}
+
+.login-btn:hover {
+    background-color: #000000;
+}
+
+.login-logo {
+    margin: 40px auto 40px auto;
+    padding-top: 40px;
+    display: block;
+}
+
+
+/*-------------------------------------------- home.html--------------------------------------------*/
+
+header {
+    background-color: white;
+    box-shadow: 0 4px 10px -1px gray;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+}
+
+.logo {
+    height: 60%;
+    padding: 16px 40px;
+}
+
+.navegar {
+    padding: 16px 40px;
+}
+
+.navegar-lk {
+    font-size: 18px;
+    margin: 0px 20px;
+    margin-left: 30px;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.navegar-lk:hover {
+    font-weight: 600;
+    margin-left: 28px;
+    /*text-shadow: 0px 0px 3px rgb(175, 175, 175);*/
+}
+
+.navegar-img {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-decoration: none;
+}
+
+.navegar-img:visited {
+    color: var(--azul);
+}
+
+.div-modu {
+    margin: 230px auto;
+    width: 50%;
+}
+
+.nav-modu {
+    display: grid;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-rows: 250px;
+}
+
+.a-modu {
+    text-decoration: none;
+    padding-bottom: 0px;
+    text-align: center;
+    margin: 42px;
+}
+
+.img-modu {
+    height: 59%;
+    margin: 0px auto;
+    display: block;
+    padding-top: 25px;
+}
+
+.box-modu {
+    box-shadow: 0 4px 10px -1px rgb(61, 61, 61);
+    border-radius: 15px;
+    margin: auto;
+    width: 90%;
+    border: none;
+    width: 150px;
+    height: 150px;
+    margin: 0px;
+}
+
+.h2-modu {
+    padding: 40px 0px 0px 0px;
+}
+
+.a-modu:visited {
+    color: #000;
+}
+
+b {
+    color: #000;
+}
+
+h1 {
+    text-align: center;
+    font-size: 90px;
+    font-style: italic;
+    margin-top: 0px;
+}
+
+
+/*-------------------------------------------- clientes.html--------------------------------------------*/
+
+.contenido {
+    margin-top: 150px;
+    padding: 0px 120px;
+}
+
+.box-ByA {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.info-tabla {
+    margin-top: 20px;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th,
+td {
+    border: 1px solid rgb(134, 134, 134);
+    text-align: center;
+    padding: 8px;
+}
+
+td {
+    text-align: left;
+}
+
+.btn-tabla {
+    padding: 10px 20px;
+    border-radius: 10px;
+    background-color: var(--azul);
+    color: white;
+    font-size: 12px;
+}
+
+.btn-tabla:hover {
+    background-color: #000;
+}
+
+.txt-tabla {
+    padding: 10px 20px;
+    border-radius: 10px;
+    width: 250px;
+}
+
+
+/*-------------------------------------------- add-clientes.html--------------------------------------------*/
+
+.add-forms {
+    font-size: 25px;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    margin-top: 60px;
+}
+
+.add-input {
+    font-size: 17px;
+    padding: 2px 10px;
+    margin: 10px 0px 40px 0px;
+    width: 100%;
+    height: 38px;
+    max-width: 600px;
+    border-radius: 5px;
+    font-family: var(--unnamed-font-family-nunito-sans);
+}
+
+.add-input::placeholder {
+    color: #888;
+    font-style: italic;
+}
+
+.add-input:focus {
+    border-color: var(--azul);
+    background-color: #dddddd;
+}
+
+.add-btn {
+    margin-top: 30px;
+    min-width: auto;
+    height: 50px;
+    width: 200px;
+    border-radius: 8px;
+    color: white;
+    background-color: var(--azul);
+    border: none;
+    font-size: 18px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.add-btn:hover {
+    background-color: #002849;
+    box-shadow: 0 4px 8px 0 rgba(202, 202, 202, 0.2) inset, 0 6px 20px 0 rgba(202, 202, 202, 0.2) inset;
+    text-shadow: 2px 2px 2px #646464;
+    /*
+    color: gray;
+    color: var(--azul);
+    border-color: #000000;
+    background-color: white;*/
+}
+
+.add-label {
+    font-size: 22px;
+}
+
+.add-label2 {
+    font-size: 22px;
+    text-align: left;
+}
+
+.btn {
+    background-repeat: no-repeat;
+    background-position: center;
+    border: none;
+    background-color: #fff;
+    padding: 30px 30px 30px 35px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 10px;
+}
+
+.edit {
+    background-image: url(../images/img/Intranet/edit.svg);
+}
+
+.delete {
+    background-image: url(../images/img/Intranet/delete.svg);
+}
+
+
+/*-------Variables-------*/
+
+:root {
+    /* Colors: */
+    --azul: #00437A;
+    --amarillo: #F3A712;
+    --gris: #D6D7D8;
+    --blanco: #FFFFFF;
+    --unnamed-color-000000: #000000;
+    --unnamed-color-004b87: #004B87;
+    /* Font/text values */
+    --unnamed-font-family-arial-rounded-mt: Arial Rounded MT;
+    --unnamed-font-family-nunito-sans: Nunito Sans;
+    --unnamed-font-style-normal: normal;
+    --unnamed-font-weight-800: 800px;
+    --unnamed-font-weight-bold: bold;
+    --unnamed-font-weight-normal: normal;
+    --unnamed-font-size-40: 40px;
+    --unnamed-font-size-60: 60px;
+    --unnamed-font-size-70: 70px;
+    --unnamed-font-size-100: 100px;
+    --unnamed-character-spacing-0: 0px;
+    --unnamed-line-spacing-54: 54px;
+    --unnamed-line-spacing-70: 70px;
+    --unnamed-line-spacing-96: 96px;
+    --unnamed-line-spacing-136: 136px;
+}

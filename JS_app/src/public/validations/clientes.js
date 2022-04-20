@@ -1,9 +1,9 @@
 
-const form = document.querySelector('#form-reg');
+const form = document.querySelector("form");
 
 form.addEventListener('submit', e => { 
     const inputNames = document.querySelector('#name');
-    
+
     if (!valChars(inputNames.value)) {
         errorInput("#names");
         e.preventDefault();

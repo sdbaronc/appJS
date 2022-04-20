@@ -3,33 +3,24 @@
 
 <%- include('partials/head'); %>
 
-<body>
-    <div class="row">
-        <div class="col-12">
+<body style="background-image: url(https://cdn.wallpapersafari.com/22/32/RWg5f1.png);
+background-repeat: no-repeat;
+background-position: center;
+background-size: cover;">
+    <div class="form">
+        <img class="login-logo" src="../images/img/resize/Logo Completo.png" alt="">
+        <hr>
 
-            <%- include('partials/nav'); %>
+        <form class="contacto-forms" action="/registroClientes" >
 
-        </div>
+            <h2 class="login-label">Usuario:</h2>
+            <input type="email" placeholder="Correo de empresa*" class="login-input"><br>
+            <label class="login-label" for="">Contraseña:</label><br>
+            <input type="password" placeholder="Contraseña*" class="login-input"><br>
+
+            <input type="submit" class="login-btn" value="Iniciar Sesion">
+        </form>
     </div>
-    <div class="container">
-
-        <div class="row mt-1">
-            <div class="col-2">
-
-            </div>
-            <div class="col-8">
-                <div class="text-center p-4">
-                    <img src="./img/upb.jpg">
-                </div>
-            </div>
-            <div class="col-2">
-
-            </div>
-        </div>
-
-    </div>
-
-    
 </body>
 
 </html>

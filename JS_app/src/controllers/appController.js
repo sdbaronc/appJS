@@ -3,6 +3,8 @@
 
 const { render } = require('ejs');
 const express = require('express');
+const con = require('../keys');
+
 
 const controller = {};
 ///////////////////////////////////////////index/////////////////////
@@ -83,6 +85,36 @@ controller.listaClientes = (req, res) => {
     };    
     res.render('listaClientes.ejs', { data: config });
 };
+controller.editarClientes = (req, res) => {
+    const config = {
+        nav: "index",
+        navContent: {
+            title: "SIAP: Lista de Clientes",
+            link_1: {
+                href: "/index",
+                text: "Regresar"
+            },
+            link_2: {
+                href: "/registroItems",
+                text: "Rgistro de Productos"
+            },
+            link_3: {
+                href: "/regitroClientes",
+                text: "Registro de Clientes"
+            },
+            link_4: {
+                href: "/listaItems",
+                text: "Ver Lista de Productos"
+            }
+        }
+    };    
+    res.render('editarClientes.ejs', { data: config });
+};
+
+
+
+
+
 //////////////////////////////////////////////items//////////////////////////////
 controller.registroItems = (req, res) => {
     const config = {
@@ -135,6 +167,34 @@ controller.listaItems = (req, res) => {
     res.render('listaItems.ejs', { data: config });
 };
 //////////////////////////////////usuarios////////////////////////////////////////////
+controller.vistaAdmin = (req, res) => {
+    const config = {
+        nav: "index",
+        navContent: {
+            title: "SIAP: Lista de Productos",
+            link_1: {
+                href: "/index",
+                text: "Regresar"
+            },
+            link_2: {
+                href: "/registroClientes",
+                text: "Rgistro de Clientes"
+            },
+            link_3: {
+                href: "/listaClientes",
+                text: "Ver Lista de Clientes"
+            },
+            link_4: {
+                href: "/registroItems",
+                text: "Registro de Productos"
+            }
+        }
+    };    
+    res.render('vistaAdmin.ejs', { data: config });
+};
+
+
+
 ////////////////////////////////ordenes de compra y facturas/////////////////////////
 controller.register = (req, res) => {
     // console.log(req.body);
@@ -204,17 +264,17 @@ controller.registerSelect = (req, res) => {
     });
 };
 
-controller.registerInsert = (req, res) => {
-    const data = req.body;
-    req.getConnection((err, conn) => {        
-        conn.query('INSERT INTO user SET ?', [data], (err, rows) => {
-            console.log(rows);
-            if (err) {
-                res.send(err);
-            }
-            res.send(data);
-        });
-    });    
+controller.registrarClientes = (req, res) => {
+    con.connect(function(err){
+        if(err) throw err;
+        console.log("conectados");
+        var sql ="INSERT INTO clientes (nit, nombre, ubicacion, correo) VALUES (10025422, 'Paula', 'bucaramanga', 'paulaa@asd.com' )";
+        con.query(sql, function(err,result){
+            if (err)throw err;
+            console.log("insertado");
+        }
+        );
+    });   con.end();
 };
 
 module.exports = controller;

@@ -24,16 +24,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'library')));
 
 //middlewares
-app.use(myConnection(mysql, {
-    host: '192.168.51.48',
-    user: 'appuser',
-    password: 'toor',
-    port: 3306,
-    database: 'appuser'
-}, 'single'));
-app.use(express.urlencoded({
-    extended: false
-}));
+//conection databases
+
 
 // routes
 app.use('/', routes);
