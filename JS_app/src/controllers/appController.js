@@ -168,6 +168,23 @@ controller.listaItems = (req, res) => {
     };    
     res.render('listaItems.ejs', { data: config });
 };
+controller.registrarItem = (req, res) => {
+    
+    
+        
+    let data = {nombre:req.body.nombre, descripcion:req.body.descripcion, stock:0, precio:req.body.precio };
+    let sql = "INSERT INTO PRODUCTOS SET ?";
+    
+    con.query(sql, data, function (error, results) {
+        res.render('registroItems.ejs');
+        if(error){
+           
+            alert('Ups! Tuvimos problemas al realizar el registro del producto, revisa los campos ingresados, seguramente algunos ya están en uso y si el problema persiste contácte con el personal de soporte técnico');
+        }else{
+            alert('Registro realizado exitosamente!');
+        }
+    });
+};
 //////////////////////////////////usuarios////////////////////////////////////////////
 
 controller.login = (req, res) => {
@@ -313,8 +330,8 @@ controller.registrarClientes = (req, res) => {
         con.query(sql, data, function (error, results) {
             res.render('registroClientes.ejs');
             if(error) {
-                throw error;
-               // alert('Ups! Tuvimos problemas al realizar el registro del cliente, revisa los campos ingresados, seguramente algunos ya están en uso y si el problema persiste contácte con el personal de soporte técnico');
+                
+               alert('Ups! Tuvimos problemas al realizar el registro del cliente, revisa los campos ingresados, seguramente algunos ya están en uso y si el problema persiste contácte con el personal de soporte técnico');
             }else{
                 alert('Registro realizado exitosamente!');
             }
