@@ -28,6 +28,7 @@ router.get('/', appController.index);
 router.get('/index', appController.index);
 router.post('/registrarUsuarios', appController.registrarUsuario);
 router.post('/login', appController.login);
+router.get('/listaUsuarios', appController.listaUsuarios);
 
 
 // /////////////////////////////////////////// Rutas del inventario/////////////////

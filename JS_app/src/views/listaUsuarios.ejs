@@ -17,7 +17,7 @@
     </header>
 
     <div class="contenido">
-        <h1 style="font-size: 60px;">Modulo Inventario</h1>
+        <h1 style="font-size: 60px;">Modulo Usuarios</h1>
         <form action="" class="box-ByA">
             <div>
                 <label for=""></label>
@@ -25,19 +25,22 @@
                 <input class="btn-tabla" type="submit" value="Buscar">
             </div>
             
-                <button type="button" class="btn-tabla"  > <a href="/registroItems">Agregar Producto</a></button>
+                <button type="button" class="btn-tabla"  > <a href="/registroUsuario">Agregar Usuario</a></button>
             
         </form>
         <div class="tabla">
             <table class="info-tabla">
-               <thead>
+                <thead>
                 <tr>
                     <th>ID</th>
                     <th>Nombre</th>
-                    <th>Descripcion</th>
-                    <th>Stock</th>
-                    <th>Precio</th>
-                   
+                    <th>CORREO</th>
+                    <th>CEDULA</th>
+                    <th>DIRECCION Electronico</th>
+                    <th>TELEFONO</th>
+                    <th>DEPARTAMENTO</th>
+                    <th>ESTADO</th>
+                    <th>CONTRASEÑA</th>
                 </tr>
             </thead>
             <tbody>
@@ -46,9 +49,13 @@
                     <tr>
                         <td><%= data[i].id %></td>
                         <td><%= data[i].nombre %></td>
-                        <td><%= data[i].descripcion %></td>
-                        <td><%= data[i].stock %></td>
-                        <td><%= data[i].precio %></td>
+                        <td><%= data[i].correo %></td>
+                        <td><%= data[i].cedula %></td>
+                        <td><%= data[i].direccion %></td>
+                        <td><%= data[i].telefono %></td>
+                        <td><%= data[i].departamento %></td>
+                        <td><%= data[i].estado %></td>
+                        <td><%= data[i].password%></td>
                     </tr>
                     <% } %>
                 <% } %>

@@ -12,106 +12,29 @@ const { Console } = require('console');
 const controller = {};
 ///////////////////////////////////////////index/////////////////////
 controller.index = (req, res) => {
-    const config = {
-        nav: "index",
-        navContent: {
-            title: "Bienvenido a S.I.A.P.",
-            link_1: {
-                href: "/registroClientes",
-                text: "Registro de Clientes"
-            },
-            link_2: {
-                href: "/registroItems",
-                text: "Rgistro de Productos"
-            },
-            link_3: {
-                href: "/listaClientes",
-                text: "Ver Lista de Clientes"
-            },
-            link_4: {
-                href: "/listaItems",
-                text: "Ver Lista de Productos"
-            }
-        }
-    };    
-    res.render('index.ejs', { data: config });
+    
+    res.render('index.ejs');
 };
 
 ////////////////////////////////////////////clientes////////////////////////
 controller.registroClientes = (req, res) => {
-    const config = {
-        nav: "index",
-        navContent: {
-            title: "SIAP: Registro de Clientes",
-            link_1: {
-                href: "/index",
-                text: "Regresar"
-            },
-            link_2: {
-                href: "/registroItems",
-                text: "Rgistro de Productos"
-            },
-            link_3: {
-                href: "/listaClientes",
-                text: "Ver Lista de Clientes"
-            },
-            link_4: {
-                href: "/listaItems",
-                text: "Ver Lista de Productos"
-            }
-        }
-    };    
-    res.render('registroClientes.ejs', { data: config });
+     
+    res.render('registroClientes.ejs');
 };
 controller.listaClientes = (req, res) => {
-    const config = {
-        nav: "index",
-        navContent: {
-            title: "SIAP: Lista de Clientes",
-            link_1: {
-                href: "/index",
-                text: "Regresar"
-            },
-            link_2: {
-                href: "/registroItems",
-                text: "Rgistro de Productos"
-            },
-            link_3: {
-                href: "/regitroClientes",
-                text: "Registro de Clientes"
-            },
-            link_4: {
-                href: "/listaItems",
-                text: "Ver Lista de Productos"
-            }
+    con.query('SELECT * FROM CLIENTES', (error, results) => {
+        if (error){
+            alert('Ups! Algo ha salido mal al realizar la consulta a la base de datos');
+        }else{
+            res.render('listaClientes.ejs', {
+                data: results
+            });
         }
-    };    
-    res.render('listaClientes.ejs', { data: config });
+    });
 };
 controller.editarClientes = (req, res) => {
-    const config = {
-        nav: "index",
-        navContent: {
-            title: "SIAP: Lista de Clientes",
-            link_1: {
-                href: "/index",
-                text: "Regresar"
-            },
-            link_2: {
-                href: "/registroItems",
-                text: "Rgistro de Productos"
-            },
-            link_3: {
-                href: "/regitroClientes",
-                text: "Registro de Clientes"
-            },
-            link_4: {
-                href: "/listaItems",
-                text: "Ver Lista de Productos"
-            }
-        }
-    };    
-    res.render('editarClientes.ejs', { data: config });
+      
+    res.render('editarClientes.ejs');
 };
 
 
@@ -120,54 +43,20 @@ controller.editarClientes = (req, res) => {
 
 //////////////////////////////////////////////items//////////////////////////////
 controller.registroItems = (req, res) => {
-    const config = {
-        nav: "index",
-        navContent: {
-            title: "SIAP: Regitro de Productos",
-            link_1: {
-                href: "/index",
-                text: "Regresar"
-            },
-            link_2: {
-                href: "/registroClientes",
-                text: "Rgistro de Clientes"
-            },
-            link_3: {
-                href: "/listaClientes",
-                text: "Ver Lista de Clientes"
-            },
-            link_4: {
-                href: "/listaItems",
-                text: "Ver Lista de Productos"
-            }
-        }
-    };    
-    res.render('registroItems.ejs', { data: config });
+       
+    res.render('registroItems.ejs');
 };
 controller.listaItems = (req, res) => {
-    const config = {
-        nav: "index",
-        navContent: {
-            title: "SIAP: Lista de Productos",
-            link_1: {
-                href: "/index",
-                text: "Regresar"
-            },
-            link_2: {
-                href: "/registroClientes",
-                text: "Rgistro de Clientes"
-            },
-            link_3: {
-                href: "/listaClientes",
-                text: "Ver Lista de Clientes"
-            },
-            link_4: {
-                href: "/registroItems",
-                text: "Registro de Productos"
-            }
+     
+    con.query('SELECT * FROM PRODUCTOS', (error, results) => {
+        if (error){
+            alert('Ups! Algo ha salido mal al realizar la consulta a la base de datos');
+        }else{
+            res.render('listaItems.ejs', {
+                data: results
+            });
         }
-    };    
-    res.render('listaItems.ejs', { data: config });
+    });
 };
 controller.registrarItem = (req, res) => {
     
@@ -187,6 +76,17 @@ controller.registrarItem = (req, res) => {
     });
 };
 //////////////////////////////////usuarios////////////////////////////////////////////
+controller.listaUsuarios=(req, res)=>{
+    con.query('SELECT * FROM USUARIOS', (error, results) => {
+        if (error){
+            alert('Ups! Algo ha salido mal al realizar la consulta a la base de datos');
+        }else{
+            res.render('listaUsuarios.ejs', {
+                data: results
+            });
+        }
+    });
+};
 
 controller.login = (req, res) => {
     const user = req.body.correo;

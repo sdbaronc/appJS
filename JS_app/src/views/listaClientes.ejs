@@ -30,17 +30,31 @@
         </form>
         <div class="tabla">
             <table class="info-tabla">
+               <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Nombre</th>
-                    <th>Apellido</th>
-                    <th>Cedula</th>
-                    <th>Correo Electronico</th>
-                    <th>Dirreccion</th>
-                    <th>Telefono</th>
-                    <th>Editar</th>
-                    <th>Eliminar</th>
+                    <th>NIT</th>
+                    <th>NOMBRE</th>
+                    <th>DIRECCION</th>
+                    <th>CORREO ELECTRONICO</th>
+                    <th>TELEFONO</th>
+                    
                 </tr>
+            </thead>
+            <tbody>
+                <% if (data) { %>
+                    <% for (var i = 0; i < data.length; i++) { %>
+                    <tr>
+                        <td><%= data[i].id %></td>
+                        <td><%= data[i].nit %></td>
+                        <td><%= data[i].nombre %></td>
+                        <td><%= data[i].direccion %></td>
+                        <td><%= data[i].correo %></td>
+                        <td><%= data[i].telefono %></td>
+                    </tr>
+                    <% } %>
+                <% } %>
+            </tbody>
             </table>
 
         </div>
