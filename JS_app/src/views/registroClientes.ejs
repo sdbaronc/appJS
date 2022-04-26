@@ -22,22 +22,23 @@
         <hr style="margin-bottom: 30px;">
         <form class="add-forms" method="post" action="/registrarClientes" >
             <div>
+                <label class="add-label"  for="">Nit:</label><br>
+                <input value="" type="number" class="add-input" name="nit"><br>
                 <label class="add-label" for="">Nombre:</label><br>
-                <input value="" type="text" class="add-input"><br>
-                <label class="add-label" for="">Apellido:</label><br>
-                <input type="text" class="add-input"><br>
-                <label class="add-label" for="">Cedula:</label><br>
-                <input type="text" class="add-input"><br>
+                <input type="text" class="add-input" name="nombre"><br>
+                
+                
                 <input type="submit" class="add-btn" value="Agregar">
             </div>
 
             <div>
                 <label class="add-label" for="">Correo Electronico:</label><br>
-                <input type="text" class="add-input"><br>
+                <input type="email" class="add-input" name="correo"><br>
                 <label class="add-label" for="">Direccion:</label><br>
-                <input type="text" class="add-input"><br>
+                <input type="text" class="add-input" name="ubica"><br>
                 <label class="add-label" for="">Telefono:</label><br>
-                <input type="text" class="add-input"><br>
+                <input type="number" class="add-input" name="telefono"><br>
+               
             </div>
 
         </form>

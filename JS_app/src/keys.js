@@ -6,5 +6,9 @@ const con= mysql.createConnection({
     password:"",
     database:"bd_js"
 });
+con.connect((err) => {
+    if (err) throw err;
+    console.log('Connected to database');
+});
 
 module.exports = con;

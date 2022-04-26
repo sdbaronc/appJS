@@ -4,6 +4,8 @@
 const { render } = require('ejs');
 const express = require('express');
 const con = require('../keys');
+const alert = require('alert');
+
 
 
 const controller = {};
@@ -167,6 +169,43 @@ controller.listaItems = (req, res) => {
     res.render('listaItems.ejs', { data: config });
 };
 //////////////////////////////////usuarios////////////////////////////////////////////
+
+controller.login = (req, res) => {
+    const user = req.body.user;
+    const pass = req.body.pass;
+
+    //Invoke crypto
+
+    const crypto = require('crypto');
+
+    let encryptPassword = crypto.createHash("sha256").update(pass).digest('hex');
+
+    connection.query('SELECT * FROM EMPLEADOS WHERE CORREO_ELECTRONICO = ? AND CONTRASENA = ?', [user, encryptPassword], async(error, results)=>{
+        if (results.length > 0){
+            if (results[0].ESTADO_EMPLEADO_ID_ESTADO_EMPLEADO == '1'){
+                if (results[0].DEPARTAMENTO_AREA_ID_DEPARTAMENTO_AREA == '1'){
+                    res.render('DashboardAdmin');
+                }else{
+                    res.render('DashboardUser');
+                }
+            }else{
+                res.render('login');
+                alert('Tu cuenta se encuentra actualmente actualmente en mantenimiento o dada de baja en el sistema, por favor contáctate el personal de soporte técnico!');
+            }
+        }else{
+            res.sendFile('login');
+            alert('Usuario y/o contraseña incorrecta!');
+        }
+    });
+
+};
+
+
+
+
+
+
+
 controller.vistaAdmin = (req, res) => {
     const config = {
         nav: "index",
@@ -265,16 +304,24 @@ controller.registerSelect = (req, res) => {
 };
 
 controller.registrarClientes = (req, res) => {
-    con.connect(function(err){
-        if(err) throw err;
-        console.log("conectados");
-        var sql ="INSERT INTO clientes (nit, nombre, ubicacion, correo) VALUES (10025422, 'Paula', 'bucaramanga', 'paulaa@asd.com' )";
-        con.query(sql, function(err,result){
-            if (err)throw err;
-            console.log("insertado");
-        }
-        );
-    });   con.end();
+    const patternEmail = new RegExp(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
+    const correo = req.body.correo;
+    if (patternEmail.test(correo)){
+        let data = {nit:req.body.nit, nombre:req.body.nombre, direccion:req.body.ubica , correo:req.body.correo, telefono:req.body.telefono};
+        let sql = "INSERT INTO CLIENTES SET ?";
+
+        con.query(sql, data, function (error, results) {
+            res.render('registroClientes.ejs');
+            if(error) {
+                throw error;
+               // alert('Ups! Tuvimos problemas al realizar el registro del cliente, revisa los campos ingresados, seguramente algunos ya están en uso y si el problema persiste contácte con el personal de soporte técnico');
+            }else{
+                alert('Registro realizado exitosamente!');
+            }
+        });
+    }else{
+        alert("La dirección de correo electrónico ingresada no es válida!");
+    }
 };
 
 module.exports = controller;
