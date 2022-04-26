@@ -11,12 +11,12 @@ background-size: cover;">
         <img class="login-logo" src="../images/img/resize/Logo Completo.png" alt="">
         <hr>
 
-        <form class="contacto-forms" action="/registroClientes" >
+        <form class="contacto-forms" action="/login" method="post"  >
 
             <h2 class="login-label">Usuario:</h2>
-            <input type="email" placeholder="Correo de empresa*" class="login-input"><br>
+            <input type="email" placeholder="Correo de empresa*" class="login-input" name="correo" required><br>
             <label class="login-label" for="">Contraseña:</label><br>
-            <input type="password" placeholder="Contraseña*" class="login-input"><br>
+            <input type="password" placeholder="Contraseña*" class="login-input" name="password" required><br>
 
             <input type="submit" class="login-btn" value="Iniciar Sesion">
         </form>

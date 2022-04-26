@@ -5,6 +5,7 @@ const { render } = require('ejs');
 const express = require('express');
 const con = require('../keys');
 const alert = require('alert');
+const { Console } = require('console');
 
 
 
@@ -188,34 +189,81 @@ controller.registrarItem = (req, res) => {
 //////////////////////////////////usuarios////////////////////////////////////////////
 
 controller.login = (req, res) => {
-    const user = req.body.user;
-    const pass = req.body.pass;
+    const user = req.body.correo;
+    const pass = req.body.password;
+    console.log(pass);
 
     //Invoke crypto
 
     const crypto = require('crypto');
 
     let encryptPassword = crypto.createHash("sha256").update(pass).digest('hex');
+    
 
-    connection.query('SELECT * FROM EMPLEADOS WHERE CORREO_ELECTRONICO = ? AND CONTRASENA = ?', [user, encryptPassword], async(error, results)=>{
+    con.query('SELECT * FROM USUARIOS WHERE CORREO = ? AND PASSWORD = ?', [user, encryptPassword], async(error, results)=>{
         if (results.length > 0){
-            if (results[0].ESTADO_EMPLEADO_ID_ESTADO_EMPLEADO == '1'){
-                if (results[0].DEPARTAMENTO_AREA_ID_DEPARTAMENTO_AREA == '1'){
-                    res.render('DashboardAdmin');
+            console.log(results);
+            if (results[0].estado == '1'){
+                if (results[0].departamento== '1'){
+                    res.render('vistaAdmin.ejs');
                 }else{
-                    res.render('DashboardUser');
+                    res.render('listaClientes.ejs');
                 }
             }else{
-                res.render('login');
+                res.render('index.ejs');
                 alert('Tu cuenta se encuentra actualmente actualmente en mantenimiento o dada de baja en el sistema, por favor contáctate el personal de soporte técnico!');
             }
         }else{
-            res.sendFile('login');
+            res.render('index.ejs');
             alert('Usuario y/o contraseña incorrecta!');
         }
     });
 
 };
+
+controller.registrarUsuario = (req, res) => {
+    const area = req.body.area;
+    const status = req.body.status;
+    
+    if (area != 0 && status != 0){
+        const patternEmail = new RegExp(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
+        const patternPassword = new RegExp(/^(?=.*[\d])(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*])[\w!@#$%^&*]{8,}$/);
+        
+        const pass = req.body.password;
+        const email = req.body.correo; 
+
+        if (patternEmail.test(email)){
+            if(pass.length > 8 && patternPassword.test(pass)){
+
+                //Invoke crypto
+
+                const crypto = require('crypto');
+
+                let encryptPassword = crypto.createHash("sha256").update(pass).digest('hex');
+
+                let data = {nombre:req.body.nombre ,correo:req.body.correo, cedula:req.body.cedula, direccion:req.body.direccion , telefono:req.body.telefono, departamento:req.body.departamento, estado:1, password:encryptPassword};
+                let sql = "INSERT INTO USUARIOS SET ?";
+
+                con.query(sql, data, function (error, results) {
+                    
+                    res.render('registroUsuario.ejs');
+                    if(error){
+                        throw error;
+                        alert('Ups! Tuvimos problemas al realizar el registro del cliente, revisa los campos ingresados, seguramente algunos ya están en uso y si el problema persiste contácte con el personal de soporte técnico');
+                    }else{
+                        alert('Registro realizado exitosamente!');
+                    }
+                });
+            }else{
+                alert("La contraseña no es válida! Esta debe tener más de ocho caracteres, incluir al menos una letra en minúscula y una en mayúscula, incluir un número y un caracter especial, entre estos últimos están únicamente los siguientes !@#$%^&*");
+            }
+        }else{
+            alert("La dirección de correo electrónico ingresada no es válida!");
+        }
+    }else{
+        alert("Por favor, selecciona una opción para cada una de las secciones desplegables!");
+    }
+}
 
 
 
@@ -252,7 +300,7 @@ controller.vistaAdmin = (req, res) => {
 
 
 ////////////////////////////////ordenes de compra y facturas/////////////////////////
-controller.register = (req, res) => {
+controller.registroUsuario = (req, res) => {
     // console.log(req.body);
     // const { id } = req.body;
     // console.log(id);
@@ -272,26 +320,10 @@ controller.register = (req, res) => {
             
         }
     };  
-    res.render('register.ejs', { data: config });
+    res.render('registroUsuario.ejs', { data: config });
 };
 
-controller.login = (req, res) => {
-    const config = {
-        nav: "register",
-        navContent: {
-            title: "HTML 5: Register",
-            link_1: {
-                href: "/index",
-                text: "Home"
-            },
-            link_2: {
-                href: "/register",
-                text: "Register"
-            },
-        }
-    }; 
-    res.render("login.ejs", { data: config });
-};
+
 
 controller.registerSelect = (req, res) => {
     req.getConnection((err, conn) => {

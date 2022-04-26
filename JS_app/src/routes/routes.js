@@ -18,14 +18,17 @@ router.get('/editarClientes', appController.editarClientes);
 router.post('/registrarClientes', appController.registrarClientes);
 
 // /////////////////////////////////////////// Rutas del usuario/////////////////
-router.get('/register', appController.register);
+
 router.get('/register/select', appController.registerSelect);
-router.get('/register', appController.register);
+router.get('/registroUsuario', appController.registroUsuario);
 router.get('/menuAdmin', appController.vistaAdmin);
 router.get('/register/select', appController.registerSelect);
 
 router.get('/', appController.index);
 router.get('/index', appController.index);
+router.post('/registrarUsuarios', appController.registrarUsuario);
+router.post('/login', appController.login);
+
 
 // /////////////////////////////////////////// Rutas del inventario/////////////////
 
@@ -37,6 +40,6 @@ router.get('/listaItems', appController.listaItems);
 
 // router.post('/register/update', appController.registerUpdate);
 // router.post('/register/delete', appController.registerDelete);
-router.get('/login', appController.login);
+
 
 module.exports = router;
